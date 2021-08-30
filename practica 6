@@ -1,0 +1,162 @@
+using System;
+
+namespace practica_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool bucle = true, bucle2 = true, continuar= true,errores=false;
+            int area=0, acorrecta=2, horas, monto, continua=0;
+            double salario1=0,salario2,impuesto1,impuestof,salariof,monto2;
+            Console.WriteLine("Calculemos su salario");
+            while (bucle)
+            {
+                while (bucle2)
+                {
+                    while (!errores)//en caso de poner una letra
+                    {
+                        Console.WriteLine("¿Cuál es su área de trabajo ?\n1-Contabilidad\n2-Producción\n3-Ventas");
+                        errores = int.TryParse(Console.ReadLine(), out area);
+                        if (!errores)
+                        {
+                            Console.WriteLine("Valor no aceptado\nSolo puede poner números del 1 al 3\nIntentelo otra vez");
+                        }
+                    }
+                    errores = !errores;
+                    //finalizamos la prevencion
+
+                    //determinamos a que area va
+                    if (area == 1)//si quiere contabilidad
+                    {
+                        while (!errores) //en caso de poner una letra
+                        {
+                            Console.WriteLine("¿Perteneciente al área de contabilidad?\n1-si\n2-no");//reafirmar si es el area que quiere
+                            errores = int.TryParse(Console.ReadLine(), out acorrecta);
+                            if (!errores)
+                            {
+                                Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                            }
+                        }
+                        errores = !errores;
+                        //finalizamos la prevencion
+                        if (acorrecta == 1)
+                        {
+                            Console.WriteLine("¿Cuántas horas trabaja?");
+                            horas = Convert.ToInt32(Console.ReadLine());
+                            salario1 = 200 * horas;
+                            Console.WriteLine("su salario pre impuesto es de " + salario1);
+                            bucle2 = false;
+                        }
+                        else if (acorrecta != 2)//si puso un numero incorrecto para la confirmacion del area
+                        {
+                            Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                        }
+                    }
+                    else if (area == 2)//si quiere produccion
+                    {
+                        while (!errores)//en caso de poner una letra
+                        {
+                            Console.WriteLine("¿Perteneciente al área de producción?\n1-si\n2-no");//reafirmar si es el area que quiere
+                            errores = int.TryParse(Console.ReadLine(), out acorrecta);
+                            if (!errores)
+                            {
+                                Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                            }
+                        }
+                        errores = !errores;
+                        //finalizamos la prevencion
+                        if (acorrecta == 1)
+                        {
+                            Console.WriteLine("¿Cuántas horas trabaja?");
+                            horas = Convert.ToInt32(Console.ReadLine());
+                            salario1 = 220 * horas;
+                            Console.WriteLine("Su salario pre impuesto es de " + salario1);
+                            bucle2 = false;
+                        }
+                        else if (acorrecta != 2)//si puso un numero incorrecto para la confirmacion del area
+                        {
+                            Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                        }
+                    }
+
+                    else if (area == 3)//si quiere ventas
+                    {
+                        while (!errores)//en caso de poner una letra
+                        {
+                            Console.WriteLine("¿Perteneciente al área de ventas?\n1-si\n2-no");//reafirmar si es el area que quiere
+                            errores = int.TryParse(Console.ReadLine(), out acorrecta);
+                            if (!errores)
+                            {
+                                Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                            }
+                        }
+                        errores = !errores;
+                        //finalizamos la prevencion
+                        if (acorrecta == 1)
+                        {
+                            Console.WriteLine("¿Cuántas horas trabaja?");
+                            horas = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("¿Cuál fue el monto que vendió en el mes?");
+                            monto = Convert.ToInt32(Console.ReadLine());
+                            salario2 = 170 * horas;
+                            Console.WriteLine("Su salario es de " + salario2);
+                            monto2 = monto * 0.05;
+                            salario1 = salario2 + monto2;
+                            Console.WriteLine("Más comisiones igual a " + monto2);
+                            Console.WriteLine("Su salario pre impuesto es de " + salario1);
+                            bucle2 = false;
+                        }
+                        else if (acorrecta != 2)//si puso un numero incorrecto para la confirmacion del area
+                        {
+                            Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                        }
+                    }
+                    else//si puso un numero incorrecto para el area
+                    {
+                        Console.WriteLine("Valor no aceptado\nSolo puede poner números del 1 al 3\nIntentelo otra vez");
+                    }
+
+                }
+               //sacamos el salario final
+                impuesto1 = salario1/100;
+                impuestof = impuesto1*6.7;
+                salariof = salario1 - impuestof;
+                Console.WriteLine("Menos impuestos del 6.7% aquivalentes a " + impuestof);
+                Console.WriteLine("Su salario final es de " + salariof);
+                //preguntamos si quiere continuar
+                while (continuar)
+                {
+                    while (!errores)//en caso de poner una letra
+                    {
+                        Console.WriteLine("¿Desea conocer otro salario?\n1-Si\n2-No");
+                        errores = int.TryParse(Console.ReadLine(), out continua);
+                        if (!errores)
+                        {
+                            Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2\nIntentelo otra vez");
+                        }
+                    }
+                    //fin de prevencion
+                    if (continua == 2)
+                    {
+                        //terminar con la ejecucion del programa
+                        bucle = false;
+                        continuar = false;
+                    }
+                    else if (continua == 1)
+                    {
+                        continuar = false;
+                    }
+                    else
+                    {
+                        //si pone un numero incorrecto al elgir si continua
+                        Console.WriteLine("Valor no aceptado\nSolo puede poner los números 1 o 2");
+                    }
+                }
+                bucle2 = true;
+                errores = !errores;
+                continuar = true;
+            }
+        }
+    }
+}
